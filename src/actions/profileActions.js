@@ -28,11 +28,11 @@ export const createProfile = (username, history) => dispatch => {
       }
   })
     .then(res => {
-      history.push('/game')
       dispatch({
         type: CREATE_PROFILE,
         payload: username
       })
+      history.push('/game')
     })
     .catch(err => {
       console.log(err)
