@@ -1,21 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { addProfile }  from '../../actions/profileActions';
+import { Link } from 'react-router-dom';
 
 //remove later are user userform component
 import { Container, Button, Form } from 'semantic-ui-react'
 
-// import 
+
+import { getProfile }  from '../../actions/profileActions';
+import {createProfile } from '../../actions/profileActions';
+
 
 
 const Home = (props) => {
-  console.log(props.addProfile)
-
+  console.log(props)
   const submitUsername = (event) => {
-    console.log(event.target.username.value)
-    props.addProfile(event.target.username.value)
+    props.createProfile(event.target.username.value)
+    event.target.reset();
   }
-  
+
   return (
     <div className="home-container">
       <Container>
@@ -24,7 +26,7 @@ const Home = (props) => {
             <label>Username</label>
             <input name="username" placeholder='username' />
           </Form.Field>
-          <Button type='submit'>Submit</Button>
+          <Link to="/game"><Button type='submit'>Submit</Button></Link>
         </Form>
       </Container>
     </div>
@@ -36,6 +38,6 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { addProfile })(
+export default connect(mapStateToProps, { getProfile, createProfile })(
   (Home)
 );
