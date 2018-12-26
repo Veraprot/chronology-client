@@ -1,10 +1,11 @@
 import {
   GET_PROFILE,
+  CREATE_PROFILE,
   GET_ERRORS
 } from '../actions/types';
 
 const initialState = {
-  profile: null,
+  username: null,
   profiles: null,
   loading: false
 };
@@ -14,8 +15,12 @@ export default function(state = initialState, action) {
     case GET_PROFILE:
       return {
         ...state,
-        profile: action.payload
       };
+    case CREATE_PROFILE:
+      return {
+        ...state,
+        username: action.payload
+      }
     default:
       return state;
   }

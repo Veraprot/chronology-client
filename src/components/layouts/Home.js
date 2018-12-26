@@ -14,7 +14,7 @@ import {createProfile } from '../../actions/profileActions';
 const Home = (props) => {
   console.log(props)
   const submitUsername = (event) => {
-    props.createProfile(event.target.username.value)
+    props.createProfile(event.target.username.value, props.history)
     event.target.reset();
   }
 
@@ -26,7 +26,7 @@ const Home = (props) => {
             <label>Username</label>
             <input name="username" placeholder='username' />
           </Form.Field>
-          <Link to="/game"><Button type='submit'>Submit</Button></Link>
+          <Button type='submit'>Submit</Button>
         </Form>
       </Container>
     </div>
@@ -34,7 +34,7 @@ const Home = (props) => {
 }
 
 const mapStateToProps = state => ({
-  username: state.username,
+  profile: state.profile
 });
 
 
