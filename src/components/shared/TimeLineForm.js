@@ -20,6 +20,7 @@ const TimeLineForm = (props) => {
     if(isValidDate(startDate) && isValidDate(endDate)) {
       let start = startDate.split('-').join('')
       let end = endDate.split('-').join('')
+      props.createTimeline(start, end)
     } else  {
       console.log('handle errors yo')
     }

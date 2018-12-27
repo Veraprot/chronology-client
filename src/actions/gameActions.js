@@ -21,7 +21,13 @@ export const createTimeline = (startDate, endDate) => dispatch => {
     .then(res => {
       dispatch({
         type: CREATE_TIMELINE,
-        payload: {startDate, endDate}
+        payload: {
+          timeline: {
+            startDate, 
+            endDate
+          },
+          cards: res.data
+        }
       })
     })
     .catch(err => {

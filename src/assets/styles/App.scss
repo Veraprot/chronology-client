@@ -1,13 +1,10 @@
 .App {
   text-align: center;
+
+  .main {
+    margin-top: 30px;
+  }
 }
 
-.navbar {
-  height: 60px;
-  background-color: black;
-}
-
-.main {
-  margin-top: 30px;
-}
-
+@import url('card.scss');
+@import url('navbar.scss');

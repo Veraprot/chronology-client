@@ -4,6 +4,7 @@ import {
 
 const initialState = {
   timeline: null,
+  cards: null,
   gameView: false
 };
 
@@ -12,7 +13,8 @@ export default function(state = initialState, action) {
     case CREATE_TIMELINE:
       return {
         ...state,
-        timeline: action.payload,
+        timeline: action.payload.timeline,
+        cards: action.payload.cards,
         gameView: true
       };
     
