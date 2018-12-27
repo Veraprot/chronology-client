@@ -1,25 +1,21 @@
 import {
-  GET_PROFILE,
-  CREATE_PROFILE,
-  GET_ERRORS
+  CREATE_TIMELINE
 } from '../actions/types';
 
 const initialState = {
-  username: null,
-  profiles: null,
+  timeline: null,
+  gameView: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_PROFILE:
+    case CREATE_TIMELINE:
       return {
         ...state,
+        timeline: action.payload,
+        gameView: true
       };
-    case CREATE_PROFILE:
-      return {
-        ...state,
-        username: action.payload
-      }
+    
     default:
       return state;
   }

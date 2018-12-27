@@ -12,7 +12,6 @@ import {createProfile } from '../../actions/profileActions';
 
 
 const Home = (props) => {
-  console.log(props)
   const submitUsername = (event) => {
     props.createProfile(event.target.username.value, props.history)
     event.target.reset();
