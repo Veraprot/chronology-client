@@ -6,31 +6,45 @@ class Card extends React.Component {
     super(props)
     this.state = {
         active: false,
+        card: this.generateRandomCard()
     };
   }
+
   toggleClass = () => {
     const currentState = this.state.active;
-    this.setState({ active: !currentState });
+    const randomCard = this.generateRandomCard()
+    this.setState({ 
+      active: !currentState,
+    }, () => console.log(this.state));
+
+    if( this.state.active) {
+      this.setState({
+        card: randomCard
+      })
+    }
   };
 
-  generateCard = () => {
-    console.log(this.props.game)
+  generateRandomCard = () => {
     let cardStack = this.props.game.cards
     const randomCard = cardStack[Math.floor(Math.random() * cardStack.length)]
-    console.log(randomCard)
+    return randomCard
+  }
+
+  generateCard = () => {
     return (
       <>
         <div className="flip-card-front">
-          <h1>{`${randomCard.event}`}</h1>
+          <h1>{`${this.state.card.event}`}</h1>
         </div>
-        <div className="flip-card-back">
-          <h1>{`${randomCard.date}`}</h1>
+        <div className="flip-card-back" >
+          <h1>{`${this.state.card.date}`}</h1>
         </div>
       </>
     )
   }
 
   render() {
+    console.log(this.state)
     return (
       <>
       <h1>Card Flip with Text</h1>
