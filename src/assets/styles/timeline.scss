@@ -1,0 +1,50 @@
+.App {
+  .main {
+    .timeline-container {
+      height: 300px;
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+
+      .card-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: calc(100% - 40px);
+        width: 20%;
+        margin: 20px 5px;
+        border: 2px solid black;
+
+        &:before {
+          position: absolute;
+          top: -16px;
+          border: medium solid black;
+          border-width: 0px 10px 15px 10px;
+          content: " ";
+          border-style: solid;
+          border-color: transparent transparent black transparent;
+          height: 0;
+          width: 0;
+          z-index: 1;
+        }
+
+        .card-content {
+          display: flex;
+          align-self: center;
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        height: 4px;
+        background-color: black;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin-top: -3px;
+      }
+    }
+  }
+}

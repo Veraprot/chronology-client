@@ -5,7 +5,7 @@ import {
 const initialState = {
   timeline: null,
   cards: null,
-  gameView: false
+  gameView: true
 };
 
 export default function(state = initialState, action) {

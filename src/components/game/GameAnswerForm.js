@@ -3,7 +3,7 @@ import { Input, Button, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import {createTimeline } from '../../actions/gameActions';
 
-const TimeLineForm = (props) => {
+const GameAnswerForm = (props) => {
   const isValidDate = (dateString) => {
     let regEx = /^\d{4}-\d{2}-\d{2}$/;
     if(!dateString.match(regEx)) return false; 
@@ -12,7 +12,7 @@ const TimeLineForm = (props) => {
     return d.toISOString().slice(0,10) === dateString;
   }
   
-  const submitDates = (event) => {
+  const submitAnswer = (event) => {
     let startDate = event.target.startDate.value;
     let endDate = event.target.endDate.value;    
 
@@ -26,7 +26,7 @@ const TimeLineForm = (props) => {
   }
 
   return (
-    <Form onSubmit={submitDates}>
+    <Form>
       <Form.Group inline>
         <Form.Field>
           <label>Start Date</label>
@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
   game: state.game
 })
 
-export default connect(mapStateToProps, {createTimeline})((TimeLineForm));
+export default connect(mapStateToProps, {createTimeline})((GameAnswerForm));
