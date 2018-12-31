@@ -1,7 +1,7 @@
 import React from 'react'
 import UserTimeline from './UserTimeline'
 import Card from './Card'
-// import CardTest from './CardTest'
+import AppDragDropDemo from './AppDragDropDemo';
 
 import GameAnswerForm from './GameAnswerForm'
 
@@ -12,7 +12,7 @@ class Game extends React.Component {
     return (
       <> 
         <Card/>
-        {/* <CardTest/> */}
+        {/* <AppDragDropDemo/> */}
         <UserTimeline/>
         <div className="user-answer-form">
           <GameAnswerForm/>

@@ -1,50 +1,40 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {setRandomCard } from '../../actions/gameActions';
 
 class Card extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        active: false,
-        card: this.generateRandomCard()
+        active: false
     };
   }
 
   toggleClass = () => {
     const currentState = this.state.active;
-    const randomCard = this.generateRandomCard()
     this.setState({ 
       active: !currentState,
-    }, () => console.log(this.state));
+    });
 
-    if( this.state.active) {
-      this.setState({
-        card: randomCard
-      })
+    if(this.state.active) {
+      this.props.setRandomCard(this.props.game.cards)
     }
   };
 
-  generateRandomCard = () => {
-    let cardStack = this.props.game.cards
-    const randomCard = cardStack[Math.floor(Math.random() * cardStack.length)]
-    return randomCard
-  }
-
-  generateCard = () => {
+  generateCard = () => {    
     return (
       <>
         <div className="flip-card-front">
-          <h1>{`${this.state.card.event}`}</h1>
+          <h1>{`${this.props.game.activeCard.event}`}</h1>
         </div>
-        <div className="flip-card-back" >
-          <h1>{`${this.state.card.date}`}</h1>
+        <div className="flip-card-back">
+          <h1>{`${this.props.game.activeCard.date}`}</h1>
         </div>
       </>
     )
   }
 
   render() {
-    console.log(this.state)
     return (
       <>
       <h1>Card Flip with Text</h1>
@@ -64,6 +54,6 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, {setRandomCard})(
   (Card)
 );

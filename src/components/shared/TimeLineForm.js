@@ -2,16 +2,9 @@ import React from 'react'
 import { Input, Button, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import {createTimeline } from '../../actions/gameActions';
+import { isValidDate } from '../../validation/forms/dateFormat'
 
-const TimeLineForm = (props) => {
-  const isValidDate = (dateString) => {
-    let regEx = /^\d{4}-\d{2}-\d{2}$/;
-    if(!dateString.match(regEx)) return false; 
-    let d = new Date(dateString);
-    if(Number.isNaN(d.getTime())) return false; 
-    return d.toISOString().slice(0,10) === dateString;
-  }
-  
+const TimeLineForm = (props) => {  
   const submitDates = (event) => {
     let startDate = event.target.startDate.value;
     let endDate = event.target.endDate.value;    
@@ -36,8 +29,8 @@ const TimeLineForm = (props) => {
           <label>End Date</label>
           <Input placeholder='YYYY-MM-DD' name="endDate"/>
         </Form.Field>
+        <Button type='submit'>Submit</Button>
       </Form.Group>
-      <Button type='submit'>Submit</Button>
     </Form>
   )
 }

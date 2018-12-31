@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import {
-  CREATE_TIMELINE
+  CREATE_TIMELINE,
+  GEN_RANDOM_CARD
 } from './types';
 
 
@@ -26,11 +27,26 @@ export const createTimeline = (startDate, endDate) => dispatch => {
             startDate, 
             endDate
           },
-          cards: res.data
+          cards: res.data,
+          activeCard: generateRandomCard(res.data)
         }
       })
     })
     .catch(err => {
       console.log(err)
     });
+}
+
+export const setRandomCard = (cardStack) => {
+  const randomCard = generateRandomCard(cardStack)
+  return {
+    type: GEN_RANDOM_CARD,
+    payload: {
+      activeCard: randomCard
+    }
+  }
+}
+
+const generateRandomCard = (cardStack) => {
+  return cardStack[Math.floor(Math.random() * cardStack.length)]
 }
