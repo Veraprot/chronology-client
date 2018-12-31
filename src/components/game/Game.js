@@ -1,10 +1,8 @@
 import React from 'react'
 import UserTimeline from './UserTimeline'
 import Card from './Card'
-import AppDragDropDemo from './AppDragDropDemo';
-
 import GameAnswerForm from './GameAnswerForm'
-
+import AppDragDropDemo from '../layouts/AppDragDropDemo';
 import {connect} from 'react-redux'
 
 class Game extends React.Component {
@@ -12,11 +10,10 @@ class Game extends React.Component {
     return (
       <> 
         <Card/>
-        {/* <AppDragDropDemo/> */}
-        <UserTimeline/>
         <div className="user-answer-form">
           <GameAnswerForm/>
         </div>
+        <UserTimeline/>
       </>
     )
   }
