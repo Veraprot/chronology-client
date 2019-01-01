@@ -48,10 +48,11 @@ export const setRandomCard = (cardStack) => {
   }
 }
 
-export const addAnswer = (card) => {
+export const addAnswer = (card, cardStack) => {
   return {
     type: ADD_ANSWER, 
     payload: {
+      activeCard: generateRandomCard(cardStack),
       answeredCard: card
     }
   }

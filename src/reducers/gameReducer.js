@@ -31,7 +31,7 @@ export default function(state = initialState, action) {
     case ADD_ANSWER:
       return {
         ...state, 
-        activeCard: null,
+        activeCard: action.payload.activeCard,
         answeredCards: [...state.answeredCards, action.payload.answeredCard]
       }
     

@@ -16,7 +16,7 @@ const GameAnswerForm = (props) => {
       let start = startDate.split('-').join('')
       let end = endDate.split('-').join('')
       // let activeCardDate = props.game.activeCard.date.split('/').join('');
-      props.addAnswer(props.game.activeCard)
+      props.addAnswer(props.game.activeCard, props.game.cards)
       // if( start.length ==  0 ) {
       //   console.log("error or answer before")
       //   console.log(end > activeCardDate);

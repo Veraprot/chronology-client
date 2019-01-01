@@ -16,7 +16,7 @@ class Card extends React.Component {
       active: !currentState,
     });
 
-    if(this.state.active) {
+    if(this.state.active || this.props.game.activeCard == null) {
       this.props.setRandomCard(this.props.game.cards)
     }
   };
