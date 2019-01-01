@@ -2,4 +2,5 @@ export const GET_PROFILE = 'GET_PROFILE';
 export const CREATE_PROFILE = 'CREATE_PROFILE';
 export const CREATE_TIMELINE = 'CREATE_TIMELINE';
 export const GEN_RANDOM_CARD = 'GEN_RANDOM_CARD';
+export const ADD_ANSWER = 'ADD_ANSWER';
 export const GET_ERRORS = 'GET_ERRORS';

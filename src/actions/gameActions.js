@@ -2,7 +2,8 @@ import axios from 'axios';
 
 import {
   CREATE_TIMELINE,
-  GEN_RANDOM_CARD
+  GEN_RANDOM_CARD,
+  ADD_ANSWER
 } from './types';
 
 
@@ -43,6 +44,15 @@ export const setRandomCard = (cardStack) => {
     type: GEN_RANDOM_CARD,
     payload: {
       activeCard: randomCard
+    }
+  }
+}
+
+export const addAnswer = (card) => {
+  return {
+    type: ADD_ANSWER, 
+    payload: {
+      answeredCard: card
     }
   }
 }

@@ -1,13 +1,14 @@
 import {
   CREATE_TIMELINE,
-  GEN_RANDOM_CARD
+  GEN_RANDOM_CARD,
+  ADD_ANSWER
 } from '../actions/types';
 
 const initialState = {
   timeline: null,
   cards: null,
   activeCard: null,
-  answeredCards: null,
+  answeredCards: [],
   gameView: false
 };
 
@@ -26,6 +27,13 @@ export default function(state = initialState, action) {
         ...state,
         activeCard: action.payload.activeCard,
       };
+
+    case ADD_ANSWER:
+      return {
+        ...state, 
+        activeCard: null,
+        answeredCards: [...state.answeredCards, action.payload.answeredCard]
+      }
     
     default:
       return state;

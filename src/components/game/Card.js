@@ -21,9 +21,14 @@ class Card extends React.Component {
     }
   };
 
+  // componentDidUpdate() {
+  //   this.props.setRandomCard(this.props.game.cards)
+  // }
+
   generateCard = () => {    
-    return (
-      <>
+    if( this.props.game.activeCard !== null ) {
+      return (
+        <>
         <div className="flip-card-front">
           <h1>{`${this.props.game.activeCard.event}`}</h1>
         </div>
@@ -31,7 +36,8 @@ class Card extends React.Component {
           <h1>{`${this.props.game.activeCard.date}`}</h1>
         </div>
       </>
-    )
+      )
+    }
   }
 
   render() {
