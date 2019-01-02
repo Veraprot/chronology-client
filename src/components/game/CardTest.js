@@ -10,10 +10,6 @@ class CardTest extends React.Component {
     }
   }
 
-  toggle = () => {
-    console.log('hi')
-  }
-
   render() {
     return (
       <>
