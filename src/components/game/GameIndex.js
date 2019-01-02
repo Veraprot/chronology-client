@@ -9,16 +9,14 @@ class GameIndex extends React.Component {
   constructor(props) {
     super(props)
   }
+
   render() {
     return (
       <>
         { !this.props.game.gameView &&
         <TimeLineForm/>
         }
-        {
-          this.props.game.gameView && 
-          <Game/>
-        }
+        <Game/>
       </>
     )
   }
@@ -26,7 +24,6 @@ class GameIndex extends React.Component {
 
 
 const mapStateToProps = state => ({
-  profile: state.profile,
   game: state.game
 });
 

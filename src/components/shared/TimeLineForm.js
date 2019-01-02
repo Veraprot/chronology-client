@@ -19,19 +19,23 @@ const TimeLineForm = (props) => {
   }
 
   return (
-    <Form onSubmit={submitDates}>
-      <Form.Group inline>
-        <Form.Field>
-          <label>Start Date</label>
-          <Input placeholder='YYYY-MM-DD' name="startDate"/>
-        </Form.Field>
-        <Form.Field>
-          <label>End Date</label>
-          <Input placeholder='YYYY-MM-DD' name="endDate"/>
-        </Form.Field>
-        <Button type='submit'>Submit</Button>
-      </Form.Group>
-    </Form>
+    <div className="modal-wrapper">
+      <div className="modal-container">
+        <Form onSubmit={submitDates} className="timeline-form">
+          <Form.Group inline>
+            <Form.Field>
+              <label color='white'>Start Date</label>
+              <Input placeholder='YYYY-MM-DD' name="startDate"/>
+            </Form.Field>
+            <Form.Field>
+              <label color='white'>End Date</label>
+              <Input placeholder='YYYY-MM-DD' name="endDate"/>
+            </Form.Field>
+            <Button type='submit'>Submit</Button>
+          </Form.Group>
+        </Form>
+      </div>
+    </div>
   )
 }
 
