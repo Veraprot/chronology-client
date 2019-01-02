@@ -1,5 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { formatDate } from '../../helpers/dateFormatter'
+
 
 class UserTimeline extends React.Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class UserTimeline extends React.Component {
         <div key={card.id} className="card-container top">
           <div className="card-content">
               <p> {card.event}</p>
-              <p>{card.date}</p>
+              <p>{formatDate(card.date)}</p>
           </div>
         </div>
       )

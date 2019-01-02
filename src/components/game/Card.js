@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {setRandomCard } from '../../actions/gameActions';
 
+import { formatDate } from '../../helpers/dateFormatter'
+
 class Card extends React.Component {
   constructor(props) {
     super(props)
@@ -22,12 +24,6 @@ class Card extends React.Component {
   };
 
   generateCard = () => {  
-    let dateString = this.props.game.activeCard.date
-    let year = dateString.substring(0,4);
-    let month = dateString.substring(4,6);
-    let day = dateString.substring(6,8);
-    let date = new Date(year, month-1, day); 
-
     if( this.props.game.activeCard !== null ) {
       return (
         <>
@@ -35,7 +31,7 @@ class Card extends React.Component {
           <h1>{`${this.props.game.activeCard.event}`}</h1>
         </div>
         <div className="flip-card-back">
-          <h1>{`${date.toISOString().split('T')[0]}`}</h1>
+          <h1>{`${formatDate(this.props.game.activeCard.date)}`}</h1>
         </div>
       </>
       )
