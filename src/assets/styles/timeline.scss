@@ -9,6 +9,7 @@
       overflow-x: scroll;
 
       .card-container {
+        // overflow: scroll;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -16,26 +17,27 @@
         position: relative;
         height: calc(100% - 40px);
         width: 20%;
+        max-width: 200px;
         margin: 20px 5px;
-        border: 2px solid black;
+        border-radius: 4px;
+        background-color: #FDF2E9;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
         &:before {
           position: absolute;
-          top: -16px;
+          top: -14px;
           border: medium solid black;
           border-width: 0px 10px 15px 10px;
           content: " ";
           border-style: solid;
-          border-color: transparent transparent black transparent;
+          border-color: transparent transparent #FDF2E9 transparent;
           height: 0;
           width: 0;
           z-index: 1;
         }
 
         .card-content {
-          // display: flex;
-          // align-self: center;
-
+          // overflow: scroll;
           p {
             font-size:12px;
           }
