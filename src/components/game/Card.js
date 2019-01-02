@@ -21,11 +21,13 @@ class Card extends React.Component {
     }
   };
 
-  // componentDidUpdate() {
-  //   this.props.setRandomCard(this.props.game.cards)
-  // }
+  generateCard = () => {  
+    let dateString = this.props.game.activeCard.date
+    let year = dateString.substring(0,4);
+    let month = dateString.substring(4,6);
+    let day = dateString.substring(6,8);
+    let date = new Date(year, month-1, day); 
 
-  generateCard = () => {    
     if( this.props.game.activeCard !== null ) {
       return (
         <>
@@ -33,7 +35,7 @@ class Card extends React.Component {
           <h1>{`${this.props.game.activeCard.event}`}</h1>
         </div>
         <div className="flip-card-back">
-          <h1>{`${this.props.game.activeCard.date}`}</h1>
+          <h1>{`${date.toISOString().split('T')[0]}`}</h1>
         </div>
       </>
       )
@@ -43,8 +45,6 @@ class Card extends React.Component {
   render() {
     return (
       <>
-      <h1>Card Flip with Text</h1>
-      <h3>Hover over the image below:</h3>
       <div className={this.state.active ? "flip-card answered": "flip-card"} onClick={this.toggleClass}>
         <div className="flip-card-inner">
           {this.generateCard()}
