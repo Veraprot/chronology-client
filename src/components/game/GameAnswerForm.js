@@ -15,22 +15,8 @@ const GameAnswerForm = (props) => {
       console.log(props)
       let start = startDate.split('-').join('')
       let end = endDate.split('-').join('')
-      // let activeCardDate = props.game.activeCard.date.split('/').join('');
-      props.addAnswer(props.game.activeCard, props.game.cards)
-      // if( start.length ==  0 ) {
-      //   console.log("error or answer before")
-      //   console.log(end > activeCardDate);
-        
-      // } else if(end.length == 0 ) {
-      //   console.log("error or after")
-      //   console.log(start, activeCardDate);
-      //   console.log(start < activeCardDate);
 
-      // } else if(start.length == 8 && end.length == 8){ 
-      //   console.log('between')
-      //   console.log(start < activeCardDate && end > activeCardDate);
-        
-      // }
+      props.addAnswer(props.game.activeCard, props.game.cards)
     } else  {
       console.log('handle errors yo')
     }

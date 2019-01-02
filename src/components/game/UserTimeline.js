@@ -2,39 +2,44 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 class UserTimeline extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(props.game.answeredCards)
+  }
+
+  sortTimelineCards = () => {
+    return this.props.game.answeredCards.sort((a, b) => {
+      return a.date.split("/").join('') - b.date.split("/").join('')
+    })
+  }
+
+  renderTimelineCards = () => {
+    let sortedCards = this.sortTimelineCards();
+    return sortedCards.map( card => {
+      return (
+        <div key={card.id} className="card-container top">
+          <div className="card-content">
+              <p> {card.event}</p>
+              <p>{card.date}</p>
+          </div>
+        </div>
+      )
+    })
+  }
   render() {
     return (
       <>
         <div className="timeline-container">
-          <div className="card-container top">
-            <div className="card-content">
-                content
-            </div>
-          </div>
-          <div className="card-container">
-            <div className="card-content">
-                content
-            </div>
-          </div>
-          <div className="card-container">
-            <div className="card-content">
-                content
-            </div>
-          </div>
-          <div className="card-container">
-            <div className="card-content">
-                content
-            </div>
-          </div>
-          <div className="card-container">
-            <div className="card-content">
-                content
-            </div>
-          </div>
+          {this.renderTimelineCards()}
         </div>
       </>
     )
   }
 }
 
-export default UserTimeline
+const mapStateToProps = state => ({
+  game: state.game
+})
+
+export default connect(mapStateToProps)((UserTimeline));
+
