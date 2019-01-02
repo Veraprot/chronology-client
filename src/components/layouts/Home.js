@@ -28,7 +28,6 @@ const Home = (props) => {
           <Button type='submit'>Submit</Button>
         </Form>
       </Container>
-      <AppDragDropDemo/>
     </div>
   )
 }
