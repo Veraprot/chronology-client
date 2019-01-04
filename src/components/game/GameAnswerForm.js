@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Button, Form, Select } from 'semantic-ui-react'
+import { Input, Button, Form, Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { isValidDate } from '../../validation/forms/dateFormat'
 
@@ -14,37 +14,47 @@ class GameAnswerForm extends React.Component {
     }
   }
 
-  handleSubmit = (event) => {
-    console.log(event.target.startDate)
-    if(this.state.action == 'answer') {
-      let startDate = event.target.startDate.value;
-      let endDate = event.target.endDate.value; 
-      
-      this.submitAnswer(startDate, endDate)
-    } else {
-      this.props.setRandomCard(this.props.game.cards)
-    }
-  }
-
   setAction = (action) => {
     this.setState({
       action
     })
   }
 
-  addSelectOptions = (date) => {
-    let options = []
+  handleSubmit = (event) => {
+    if(this.state.action == 'answer') {
+      let startDate = this.state.startDate.value;
+      let endDate = this.state.endDate.value; 
+      this.submitAnswer(startDate, endDate)
+    } else {
+      this.props.setRandomCard(this.props.game.cards)
+    }
+  }
+
+  getDate = (event, data) => {
+    let dateType = data.options[0].type;
+    this.setState({
+      [dateType]: data.value
+    })
+  }
+
+  addSelectOptions = (dateType) => {
+    let options = [];
     this.props.game.answeredCards.forEach(card => {
-      options.push({
+      options = [{
+        type: dateType,
         key: card.id,
-        name: "startDate",
         value: card.date,
         text: card.date
-      })
+      }]
     });
-    console.log(options)
     return(
-      <Form.Select placeholder='date' name={date} fluid selection options={options} />
+      <Form.Dropdown 
+        placeholder='date' 
+        fluid
+        selection 
+        onClick={this.test}
+        onChange={this.getDate}
+        options={options} />
     )
   }
 
@@ -62,12 +72,15 @@ class GameAnswerForm extends React.Component {
         <Form.Group inline>
           <Form.Field>
             <label>Between</label>
-            { this.props.game.answeredCards.length < 12 ? 
+            { this.props.game.answeredCards.length <= 0 ? 
               (
-                <Input placeholder='YYYY-MM-DD' name="startDate"/>
+                // <Input placeholder='YYYY-MM-DD' name="startDate"/>
+                <>
+                  {this.addSelectOptions('endDate')}
+                </>
               ) : (
                 <>
-                  {this.addSelectOptions("startDate")}
+                  {this.addSelectOptions('startDate')}
                 </>
               )
             }
@@ -75,12 +88,15 @@ class GameAnswerForm extends React.Component {
           </Form.Field>
           <Form.Field>
             <label>And</label>
-            { this.props.game.answeredCards.length < 12 ? 
+            { this.props.game.answeredCards.length < 2 ? 
               (
-                <Input placeholder='YYYY-MM-DD' name="endDate"/>
+                // <Input placeholder='YYYY-MM-DD' name="endDate"/>
+                <>
+                  {this.addSelectOptions('endDate')}
+                </>
               ) : (
                 <>
-                  {this.addSelectOptions("endDate")}
+                  {this.addSelectOptions('endDate')}
                 </>
               )
             }

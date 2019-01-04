@@ -6,7 +6,6 @@ import { formatDate } from '../../helpers/dateFormatter'
 class UserTimeline extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props.game.answeredCards)
   }
 
   sortTimelineCards = () => {
