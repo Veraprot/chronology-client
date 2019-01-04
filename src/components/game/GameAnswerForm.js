@@ -41,12 +41,12 @@ class GameAnswerForm extends React.Component {
   addSelectOptions = (dateType) => {
     let options = [];
     this.props.game.answeredCards.forEach(card => {
-      options = [{
+      options.push({
         type: dateType,
         key: card.id,
         value: card.date,
         text: card.date
-      }]
+      })
     });
     return(
       <Form.Dropdown 

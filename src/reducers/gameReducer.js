@@ -15,11 +15,6 @@ const initialState = {
 export default function(state = initialState, action) {
   console.log('store state', state)
   switch (action.type) {
-    // case BUILD_CARDSTACK:
-    //   return {
-    //     ...state,
-    //     cards: action.payload.cards
-    //   }
     case CREATE_TIMELINE:
       return {
         ...state,
