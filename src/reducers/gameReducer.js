@@ -13,13 +13,20 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  console.log('store state', state)
   switch (action.type) {
+    // case BUILD_CARDSTACK:
+    //   return {
+    //     ...state,
+    //     cards: action.payload.cards
+    //   }
     case CREATE_TIMELINE:
       return {
         ...state,
         timeline: action.payload.timeline,
         cards: action.payload.cards,
         activeCard: action.payload.activeCard,
+        answeredCards: action.payload.answeredCards,
         gameView: true
       };
     case GEN_RANDOM_CARD:

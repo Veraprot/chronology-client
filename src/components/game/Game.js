@@ -5,17 +5,34 @@ import GameAnswerForm from './GameAnswerForm'
 import {connect} from 'react-redux'
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(this.props)
+  }
+
+  loadFiles = () => {
+    if(this.props.game.cards) {
+      return (
+        <>
+          <GameAnswerForm/>
+          <UserTimeline/>
+        </>
+      )
+    }
+  }
+  
   render() {
     return (
       <> 
         <Card/>
-        <div className="user-answer-form">
-          <GameAnswerForm/>
-        </div>
-        <UserTimeline/>
+        {this.loadFiles()}
       </>
     )
   }
 }
 
-export default Game
+const mapStateToProps = state => ({
+  game: state.game
+})
+
+export default connect(mapStateToProps)((Game));

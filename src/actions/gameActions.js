@@ -29,7 +29,8 @@ export const createTimeline = (startDate, endDate) => dispatch => {
             endDate
           },
           cards: res.data,
-          activeCard: generateRandomCard(res.data)
+          activeCard: generateRandomCard(res.data),
+          answeredCards: [ generateRandomCard(res.data), generateRandomCard(res.data) ]
         }
       })
     })

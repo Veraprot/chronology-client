@@ -24,6 +24,7 @@ class GameAnswerForm extends React.Component {
     if(this.state.action == 'answer') {
       let startDate = this.state.startDate.value;
       let endDate = this.state.endDate.value; 
+      console.log(startDate, endDate)
       this.submitAnswer(startDate, endDate)
     } else {
       this.props.setRandomCard(this.props.game.cards)
@@ -59,52 +60,50 @@ class GameAnswerForm extends React.Component {
   }
 
   submitAnswer = (startDate, endDate) => {
-    if(isValidDate(startDate) && endDate.length == 0 || isValidDate(endDate) && startDate == 0 || isValidDate(startDate) && isValidDate(endDate) ) {
-      this.props.addAnswer(this.props.game.activeCard, this.props.game.cards)
-    } else  {
-      console.log('handle errors yo')
-    }
+    this.props.addAnswer(this.props.game.activeCard, this.props.game.cards)
   }
   
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group inline>
-          <Form.Field>
-            <label>Between</label>
-            { this.props.game.answeredCards.length <= 0 ? 
-              (
-                // <Input placeholder='YYYY-MM-DD' name="startDate"/>
-                <>
-                  {this.addSelectOptions('endDate')}
-                </>
-              ) : (
-                <>
-                  {this.addSelectOptions('startDate')}
-                </>
-              )
-            }
-  
-          </Form.Field>
-          <Form.Field>
-            <label>And</label>
-            { this.props.game.answeredCards.length < 2 ? 
-              (
-                // <Input placeholder='YYYY-MM-DD' name="endDate"/>
-                <>
-                  {this.addSelectOptions('endDate')}
-                </>
-              ) : (
-                <>
-                  {this.addSelectOptions('endDate')}
-                </>
-              )
-            }
-          </Form.Field>
-          <Button type='submit' name="action" value="answer" onClick={() => this.setAction('answer')}>Answer</Button>
-          <Button type='submit' name="action" value="skip" onClick={() => this.setAction('skip')}>Skip</Button>
-        </Form.Group>
-      </Form>
+      <div className="user-answer-form">
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group inline>
+            <Form.Field>
+              <label>Between</label>
+              { this.props.game.answeredCards.length <= 0 ? 
+                (
+                  // <Input placeholder='YYYY-MM-DD' name="startDate"/>
+                  <>
+                    {this.addSelectOptions('endDate')}
+                  </>
+                ) : (
+                  <>
+                    {this.addSelectOptions('startDate')}
+                  </>
+                )
+              }
+    
+            </Form.Field>
+            <Form.Field>
+              <label>And</label>
+              { this.props.game.answeredCards.length < 2 ? 
+                (
+                  // <Input placeholder='YYYY-MM-DD' name="endDate"/>
+                  <>
+                    {this.addSelectOptions('endDate')}
+                  </>
+                ) : (
+                  <>
+                    {this.addSelectOptions('endDate')}
+                  </>
+                )
+              }
+            </Form.Field>
+            <Button type='submit' name="action" value="answer" onClick={() => this.setAction('answer')}>Answer</Button>
+            <Button type='submit' name="action" value="skip" onClick={() => this.setAction('skip')}>Skip</Button>
+          </Form.Group>
+        </Form>
+      </div>
     )
   }
 }
