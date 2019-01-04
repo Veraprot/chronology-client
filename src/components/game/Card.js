@@ -10,6 +10,8 @@ class Card extends React.Component {
     this.state = {
         active: false
     };
+
+    console.log(this.props)
   }
 
   toggleClass = () => {

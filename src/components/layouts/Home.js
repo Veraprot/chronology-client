@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 //remove later are user userform component
 import { Container, Button, Form } from 'semantic-ui-react'
-import AppDragDropDemo from './AppDragDropDemo';
-
 
 import { getProfile }  from '../../actions/profileActions';
 import {createProfile } from '../../actions/profileActions';
